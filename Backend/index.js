@@ -11,7 +11,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ origin: 'https://event-management-xi-eight.vercel.app' }));
 
 console.log(process.env.MONGO_URL)
 mongoose

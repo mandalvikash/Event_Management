@@ -12,7 +12,7 @@ const UpdateEvent = () => {
   useEffect(() => {
     const fetchEvent = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/events/${id}`);
+        const response = await fetch(`https://event-management-2k1n2ooyn-vikash-mandals-projects.vercel.app/${id}`);
         if (!response.ok) {
           throw new Error("Failed to fetch event details.");
         }

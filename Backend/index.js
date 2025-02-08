@@ -10,7 +10,7 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors({ origin: "https://event-management-xi-eight.vercel.app" });
+app.use(cors());
 app.use(express.json());
 
 console.log(process.env.MONGO_URL)

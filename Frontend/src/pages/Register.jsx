@@ -12,7 +12,7 @@ const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("https://event-management-2k1n2ooyn-vikash-mandals-projects.vercel.app/register", {
+      await axios.post("http://localhost:5000/api/auth/register", {
         username,
         email,
         password,

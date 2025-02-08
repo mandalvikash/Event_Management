@@ -11,7 +11,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/events");
+        const response = await axios.get("https://event-management-2k1n2ooyn-vikash-mandals-projects.vercel.app");
         setEvents(response.data);
       } catch (err) {
         console.error("Failed to fetch events:", err);

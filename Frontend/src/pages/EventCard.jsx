@@ -16,7 +16,7 @@ const EventCard = ({ event }) => {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/events/${event._id}`,
+        `https://event-management-xi-eight.vercel.app/api/events/${event._id}`,
         {
           method: "DELETE",
           headers: {

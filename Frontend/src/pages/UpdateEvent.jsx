@@ -12,7 +12,7 @@ const UpdateEvent = () => {
   useEffect(() => {
     const fetchEvent = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/events/${id}`);
+        const response = await fetch(`https://event-management-xi-eight.vercel.app/api/events/${id}`);
         if (!response.ok) {
           throw new Error("Failed to fetch event details.");
         }
@@ -48,7 +48,7 @@ const UpdateEvent = () => {
     }
 
     try {
-      const response = await fetch(`http://localhost:5000/api/events/${id}`, {
+      const response = await fetch(`https://event-management-xi-eight.vercel.app/api/events/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

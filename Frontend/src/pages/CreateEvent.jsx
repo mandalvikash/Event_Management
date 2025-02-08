@@ -20,7 +20,7 @@ const CreateEvent = () => {
 
     try {
       await axios.post(
-        "http://localhost:5000/api/events",
+        "https://event-management-xi-eight.vercel.app/api/events",
         { name, description, date, location },
         {
           headers: {

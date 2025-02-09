@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-
+import {jwtDecode} from "jwt-decode";
 const EventCard = ({ event }) => {
   const navigate=useNavigate();
   const handleDelete = async () => {
@@ -14,9 +14,10 @@ const EventCard = ({ event }) => {
     console.log("Deleting event with ID:", event._id);
     console.log("Token:", token);
 
+
     try {
       const response = await fetch(
-        `https://event-management-xi-eight.vercel.app/api/events/${event._id}`,
+        `http://localhost:5000/api/events/${event._id}`,
         {
           method: "DELETE",
           headers: {
@@ -43,6 +44,19 @@ const EventCard = ({ event }) => {
   };
 
 
+  const token = localStorage.getItem("token");
+  let loggedInUserId = null;
+  if (token) {
+    try {
+      const decoded = jwtDecode(token);
+      loggedInUserId = decoded.id; // Adjust according to your JWT payload structure
+    } catch (error) {
+      console.error("Invalid token:", error);
+    }
+  }
+
+  console.log(loggedInUserId)
+  console.log(event.createdBy._id)
   const handleUpdate = () => {
     navigate(`/update-event/${event._id}`); // Navigate to the UpdateEvent page
   };
@@ -59,32 +73,27 @@ const EventCard = ({ event }) => {
             {new Date(event.date).toLocaleString()}
           </p>
           <p className="mt-2 text-gray-600">
-            <strong className="text-gray-800">Location:</strong>{" "}
-            {event.location}
+            <strong className="text-gray-800">Location:</strong> {event.location}
           </p>
           <p className="mt-2 text-gray-600">
-            <strong className="text-gray-800">Created By:</strong>{" "}
-            {event.createdBy.username}
+            <strong className="text-gray-800">Created By:</strong> {event.createdBy.username}
           </p>
         </div>
-        <div className="flex items-end">
-        <div className="px-3">
-        <button
-            className="bg-green-500 text-white rounded-full"
-            onClick={handleUpdate}
-          >
-            Update
-          </button>
-        </div>
-        <div>
-        <button
-            className="bg-red-500 text-white rounded-full"
-            onClick={handleDelete}
-          >
-            Delete
-          </button>
-        </div>
-        </div>
+
+        {loggedInUserId === event.createdBy._id && (
+          <div className="flex items-end">
+            <div className="px-3">
+              <button className="bg-green-500 text-white px-3 py-1 rounded-full cursor-pointer" onClick={handleUpdate}>
+                Update
+              </button>
+            </div>
+            <div>
+              <button className="bg-red-500 text-white px-3 py-1 rounded-full cursor-pointer" onClick={handleDelete}>
+                Delete
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

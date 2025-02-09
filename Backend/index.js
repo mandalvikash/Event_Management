@@ -11,8 +11,8 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use( cors({
-    origin: "https://event-management-xi-eight.vercel.app", // Add quotes
-    credentials: true, // Allow credentials if needed (cookies, authorization headers)
+    origin: ["https://event-management-xi-eight.vercel.app", "https://event-management-si93.vercel.app"],
+    credentials: true, // Allows cookies and authorization headers
   }));
 app.use(express.json());
 

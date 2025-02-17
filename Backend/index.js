@@ -11,7 +11,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use( cors({
-    origin: ["https://vercel.com/vikash-mandals-projects/tax-calculation", "https://event-management-si93.vercel.app"],
+    origin: ["https://vercel.com/vikash-mandals-projects/event-management-si93", "https://event-management-si93.vercel.app"],
     credentials: true, // Allows cookies and authorization headers
   }));
 app.use(express.json());
